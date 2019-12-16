@@ -55,14 +55,14 @@
             
             <p>Enter text you would like to encrypt or decrypt in the box below:</p>
             <textarea rows="10 cols="100" name="textArea"></textarea>
+            <br>
+            <input type = "Submit" name ="submitTextbox" value="Encrypt/Decrypt Text"/>
             
             <br><br>
             <p>Or submit a text file here:</p>
         <input type='file' name='selectedFile' id='selectedFile'>
             <br><br>
-            
-            <input type = "Submit" name ="submitTextbox" value="Encrypt/Decrypt Textbox!"/>
-            <input type = "Submit" name ="submitFile" value="Encrypt/Decrypt File!"/>
+            <input type = "Submit" name ="submitFile" value="Encrypt/Decrypt Text File"/>
 
             <h3>Output:</h3>
 
