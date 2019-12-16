@@ -26,6 +26,7 @@
                         else { alert(fail); return false }
                     }
                     </script>
+                    <script src="validate_functions.js"></script
                 </head>
                 <body>
                     <table border="0" cellpadding="2" cellspacing="5" bgcolor="#eeeeee">
@@ -43,7 +44,7 @@
                     </table>
                 </body>
             </html>
-    _END;
+_END;
 
     $table = "CREATE TABLE IF NOT EXISTS users (
             username VARCHAR(32) NOT NULL UNIQUE,
