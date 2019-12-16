@@ -29,7 +29,7 @@
                 </head>
                 <body>
                     <table border="0" cellpadding="2" cellspacing="5" bgcolor="#eeeeee">
-                        <th colspan="2" align="center">Signup Form</th>
+                        <th colspan="2" align="center">Sign Up Form</th>
                         <form method="post" action="register.php" onsubmit="return validate(this)">
                             <tr><td>Username</td>
                                 <td><input type="text" maxlength="16" name="username"></td></tr>
@@ -37,12 +37,12 @@
                                 <td><input type="text" maxlength="12" name="password"></td></tr>
                             <tr><td>Email</td>
                                 <td><input type="text" maxlength="64" name="email"></td></tr>
-                            <tr><td colspan="2" align="center"><input type="submit"
-                                value="Signup"></td></tr>
+                            <tr><td colspan="2" align="center"><input type="submit" name="submit"
+                                value="Sign Up"></td></tr>
                         </form>
                     </table><br>
                     <a href=authenticate.php>Sign in instead</a><br><br>
-                    <a href=Homepage.php>Go home</a>
+                    <a href=Homepage.php>Go home</a><br><br>
                 </body>
             </html>
 _END;
@@ -62,7 +62,7 @@ _END;
 
         if (validate($username, $password, $email)) {
             $token = password_hash($password, PASSWORD_DEFAULT);    // Securely generate hash with salt for given password
-            add_user($conn, $username, $email, $token);
+            add_user($conn, $username, $token, $email);
             echo "Welcome $username!<br>";
             die ("<a href=authenticate.php>Click here to log in.</a>");
             $result->close();
@@ -70,18 +70,15 @@ _END;
         }
     }
 
-    function add_user($conn, $username, $email, $token) {
-        $stmt = $conn->prepare('INSERT INTO users VALUES (?, ?, ?)');
-        $stmt->bind_param('sss', $username, $email, $token);
+    function add_user($conn, $username, $token, $email) {
+        $stmt = $conn->prepare('INSERT INTO users VALUES(?,?,?)');
+        $stmt->bind_param('sss', $username, $token, $email);
         $stmt->execute();
-        $result = $stmt->get_result();
         $stmt->close();
-
-        if (!$result) die(mysql_fatal_error());
     }
 
     function validate($username, $password, $email) {
-        if (!validate_username($username) == "" || validate_password($password) == "" || validate_email($email) == "")
+        if (!validate_username($username) == "" || !validate_password($password) == "" || !validate_email($email) == "")
             return FALSE;
         return TRUE;
     }
