@@ -14,12 +14,16 @@
         $_SESSION['initiated'] = 1;
     }
     
+    if (isset($_POST['logout'])) {
+        different_user();
+    }
+    
     if (isset($_SESSION['username'])) {
 
         ini_set('session.gc_maxlifetime', 60 * 60 * 24);
         $username = $_SESSION['username'];
 
-        echo "Welcome back $username!<br><br>";
+        echo "Welcome back $username!<br>";
 
         $query = "CREATE TABLE IF NOT EXISTS dataEntry(
             entryTimeStamp TIMESTAMP NOT NULL,
@@ -35,10 +39,12 @@
 
     echo <<<_END
 
-        <h1>Welcome to Decryptoid!</h1>
+        <h1>Decryptoid</h1>
         
         <p><a href=register.php>Sign up</a>   <a href=authenticate.php>Login</a></p>
-        
+        <form action='Homepage.php' method='POST' enctype='multipart/form-data'>
+            <input type='submit' name='logout' value='Logout'>
+        </form> 
         <form action="Homepage.php" method="POST" enctype="multipart/form-data">
             
             Select Cipher: <select id ="ciphers" name ="ciphers">
@@ -62,7 +68,7 @@
             <p>Or submit a text file here:</p>
         <input type='file' name='selectedFile' id='selectedFile'>
             <br><br>
-            <input type = "Submit" name ="submitFile" value="Encrypt/Decrypt Text File"/>
+            <input type = "Submit" name ="submitFile" value="Encrypt/Decrypt File"/>
 
             <h3>Output:</h3>
 
