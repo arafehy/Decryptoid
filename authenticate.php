@@ -28,16 +28,19 @@
                 $_SESSION['password'] = $token;
                 $_SESSION['email'] = $row[2];
                 echo "Welcome row[0]!";
-                die ("<a href=Homepage.php>Click here to access main page</a>");
+                die ("<a href=Homepage.php>Click here to continue.</a>");
             }
-			else die("Invalid username/password combination");  // Incorrect password
+			else die("Invalid username/password combination<br>
+			<a href=authenticate.php>Click here to try again</a> or <a href=Homepage.php>here to go home.");  // Incorrect password
 		}
-		else die("Invalid username/password combination");  // Incorrect username
+		else die("Invalid username/password combination<br>
+			<a href=authenticate.php>Click here to try again</a> or <a href=Homepage.php>here to go home.");  // Incorrect username
     }
     else {
         header('WWW-Authenticate: Basic realm="Restricted Section"');
         header('HTTP/1.0 401 Unauthorized');
-        die ("Please enter your username and password to continue.");
+        die ("Please enter your username and password to continue.<br>
+        <a href=authenticate.php>Click here to try again</a> or <a href=Homepage.php>here to go home.");
     }
 
     $conn->close();
