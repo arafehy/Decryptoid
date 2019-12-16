@@ -16,7 +16,6 @@
                     }
                     </style>
                     <script>
-                    <script src="validate_functions.js"></script>
                     function validate(form) {
                         fail = validateUsername(form.username.value)
                         fail += validatePassword(form.password.value)
@@ -41,7 +40,9 @@
                             <tr><td colspan="2" align="center"><input type="submit"
                                 value="Signup"></td></tr>
                         </form>
-                    </table>
+                    </table><br>
+                    <a href=authenticate.php>Sign in instead</a><br><br>
+                    <a href=Homepage.php>Go home</a>
                 </body>
             </html>
 _END;
