@@ -39,7 +39,7 @@
         
         <p><a href=register.php>Sign up</a>   <a href=authenticate.php>Login</a></p>
         
-        <form action="MainPage.php" method="POST" enctype="multipart/form-data">
+        <form action="Homepage.php" method="POST" enctype="multipart/form-data">
             
             Select Cipher: <select id ="ciphers" name ="ciphers">
                 <option value = "Simple Substitution">Simple Substitution</option>
@@ -67,7 +67,7 @@
             <h3>Output:</h3>
 
         </form>      
-    _END;
+_END;
 
     if (isset($_POST['submitTextbox'])) {   // Get input from text box
         if (strlen($_POST['textArea']) != 0) {
@@ -111,7 +111,7 @@
         }
 
         if($_POST['ciphers'] == 'Simple Substitution') {
-            require_once 'SimpleSubs.php';
+            require_once 'SimpleSubstitution.php';
 
             $cipher = new SimpleSubstitution();
 
