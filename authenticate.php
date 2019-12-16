@@ -27,7 +27,7 @@
                 $_SESSION['username'] = $un_temp;
                 $_SESSION['password'] = $token;
                 $_SESSION['email'] = $row[2];
-                echo "Welcome row[0]!";
+                echo "Welcome $row[0]!<br>";
                 die ("<a href=Homepage.php>Click here to continue.</a>");
             }
 			else die("Invalid username/password combination<br>
