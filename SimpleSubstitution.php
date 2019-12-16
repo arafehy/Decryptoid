@@ -5,8 +5,8 @@
                             "n"=>"v", "o"=>"d", "p"=>"z", "q"=>"x", "r"=>"k", "s"=>"i", "t"=>"o",
                             "u"=>"f", "v"=>"s", "w"=>"t", "x"=>"j", "y"=>"w", "z"=>"b"," "=> " ");
                             
-        public function Encrypt($s, $pair){
-            $encrypt = strtolower($s);
+        public function encrypt($string, $pair){
+            $encrypt = strtolower($string);
             $encryptValue = " ";
 
             for($i=0; $i<strlen($encrypt); $i++){
@@ -19,9 +19,9 @@
             return $encryptValue;
         }
 
-        public function Decrypt($s, $pair){
+        public function decrypt($string, $pair){
 
-            $decrypt = strtolower($s);
+            $decrypt = strtolower($string);
             $decryptValue = " ";
 
             for($i=0; $i<strlen($decrypt); $i++){
