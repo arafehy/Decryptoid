@@ -7,14 +7,17 @@
 
     session_start();
     
-    if (isset($_SESSION['check']) && $_SESSION['check'] != hash('ripemd128', $_SERVER['REMOTE_ADDR'] .$_SERVER['HTTP_USER_AGENT']))
+    if (isset($_SESSION['check']) && $_SESSION['check'] != hash('ripemd128', $_SERVER['REMOTE_ADDR'] .$_SERVER['HTTP_USER_AGENT'])) {
+        unset($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']);
         different_user();
+    }
     if (!isset($_SESSION['initiated'])) {
         session_regenerate_id();
         $_SESSION['initiated'] = 1;
     }
     
     if (isset($_POST['logout'])) {
+        unset($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']);
         different_user();
     }
     
